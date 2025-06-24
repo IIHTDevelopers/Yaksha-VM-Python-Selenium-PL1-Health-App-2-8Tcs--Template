@@ -1,30 +1,37 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import random
 import time
 
-class UtilitiesPage:
+class ProcurementPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
-        self.utilities = {
-            "utilities_link": (By.XPATH, "//span[text()='Utilities']"),
-            "scheme_refund_tab": (By.CSS_SELECTOR, 'ul.page-breadcrumb a[href="#/Utilities/SchemeRefund"]'),
-            "counter_item": (By.XPATH, "//div[@class='counter-item']"),
-            "new_scheme_refund_entry_button": (By.XPATH, "//a[contains(text(),'New Scheme Refund Entry')]"),
-            "save_scheme_refund_button": (By.CSS_SELECTOR, "button#savebutton"),
-            "warning_popup": (By.XPATH, "//p[contains(text(),'warning')]/../p[contains(text(),'Please fill all the mandatory fields.')]"),
+        self.procurement = {
+            "procurement_link": (By.CSS_SELECTOR, 'a[href="#/ProcurementMain"]'),
+            "settings": (By.XPATH, '//a[contains(text(),"Settings")]'),
+            "currency_sub_tab": (By.CSS_SELECTOR, 'a[routerlink="CurrencyList"]'),
+            "add_currency_button1": (By.CSS_SELECTOR, 'input[value="Add Currency"]'),
+            "add_currency_button2": (By.CSS_SELECTOR, 'input#AddCurrency'),
+            "currency_code": (By.CSS_SELECTOR, 'input#CurrencyCode'),
+            "currency_description_field": (By.CSS_SELECTOR, 'input#Description'),
+            "search_bar": (By.CSS_SELECTOR, 'input#quickFilterInput'),
+            "currency_code_column": (By.CSS_SELECTOR, 'div[col-id="CurrencyCode"]'),
         }
 
-    def verify_mandatory_fields_warning(self):
+    def add_currency_and_verify(self):
         """
         /**
-        * @Test6
-        * @description This method verifies that a warning popup is displayed when attempting to save a new
-        *              Scheme Refund Entry without filling in mandatory fields.
+        * @Test5
+        * @description This method navigates to the Purchase Request page, accesses the Currency Settings,
+        *              adds a new currency with a unique code and description, and verifies that the new
+        *              currency is successfully added to the table.
+        *
         * @expected
-        * A warning popup should appear with the message: "Please fill all the mandatory fields."
+        * The new currency should be added successfully and displayed in the table with the correct currency
+        * code and description.
         */
         """
         pass
-        assert False,"TODO:Implement verify_mandatory_fields_warning"
+        assert False,"TODO:Implement add_currency_and_verify"
