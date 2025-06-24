@@ -26,39 +26,5 @@ class UtilitiesPage:
         * A warning popup should appear with the message: "Please fill all the mandatory fields."
         */
         """
-        try:
-            # Navigate to Utilities and open Scheme Refund tab
-            self.wait.until(EC.element_to_be_clickable(self.utilities["utilities_link"])).click()
-            self.wait.until(EC.element_to_be_clickable(self.utilities["scheme_refund_tab"])).click()
-
-            # Select first counter item if available
-            time.sleep(3)  # Wait for the counter items to load
-            counter_items = self.wait.until(EC.presence_of_all_elements_located(self.utilities["counter_item"]))
-            counter_count = len(counter_items)
-            print("Counter count is " + str(counter_count))
-
-            if counter_count > 0:
-                counter_items[0].click()
-            else:
-                print("No counter items available")
-
-            # Click "New Scheme Refund Entry" button
-            self.wait.until(EC.element_to_be_clickable(self.utilities["new_scheme_refund_entry_button"])).click()
-
-            # Click Save without filling any fields
-            self.wait.until(EC.element_to_be_clickable(self.utilities["save_scheme_refund_button"])).click()
-
-            # Wait for warning popup
-            warning_popup = self.wait.until(EC.visibility_of_element_located(self.utilities["warning_popup"]))
-
-            # Verify warning message
-            popup_message = warning_popup.text.strip()
-            if popup_message == "Please fill all the mandatory fields.":
-                return True
-            else:
-                print(f"Expected warning message not found. Found: {popup_message}")
-                return False
-
-        except Exception as e:
-            print(f"Test failed due to error: {e}")
-            return False
+        pass
+        assert False,"TODO:Implement verify_mandatory_fields_warning"
