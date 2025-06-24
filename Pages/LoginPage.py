@@ -74,22 +74,5 @@ class LoginPage:
         * User is logged out successfully and the login page is displayed.
         */
         """
-        try:
-            time.sleep(10)  # Consider replacing with an explicit wait
-
-            # Click the admin dropdown
-            admin_element = self.wait.until(EC.element_to_be_clickable(self.admin))
-            admin_element.click()
-
-            # Click the logout button
-            log_out_element = self.wait.until(EC.element_to_be_clickable(self.log_out))
-            log_out_element.click()
-
-            # Verify that the login button is visible after logout
-            login_btn = self.wait.until(EC.visibility_of_element_located(self.login_button))
-
-            return login_btn.is_displayed()
-
-        except Exception as e:
-            print(f"Test failed due to error: {e}")
-            return False
+        pass
+        assert False,"TODO:Implement verify_logout_functionality"
