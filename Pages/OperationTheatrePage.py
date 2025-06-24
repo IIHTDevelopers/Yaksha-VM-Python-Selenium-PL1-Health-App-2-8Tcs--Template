@@ -1,3 +1,5 @@
+import time
+from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -75,31 +77,5 @@ class OperationTheatrePage:
         * @description This method verifies and handles the alert for OT booking without patient selection.
         */
         """
-        try:
-            wait = WebDriverWait(self.driver, 10)
-
-            # Click on "Operation Theatre" link
-            wait.until(EC.element_to_be_clickable(self.ot_booking["operation_theatre_link"])).click()
-
-            # Click on the "New OT Booking" button
-            wait.until(EC.element_to_be_clickable(self.ot_booking["new_ot_booking_button"])).click()
-
-            # Verify the modal is displayed
-            modal_visible = wait.until(EC.visibility_of_element_located(self.ot_booking["modal_heading"]))
-            assert modal_visible.is_displayed(), "Modal heading is not visible"
-
-            # Click on the "Add New OT" button
-            wait.until(EC.element_to_be_clickable(self.ot_booking["add_new_ot_button"])).click()
-
-            # Wait for and handle the alert
-            alert = wait.until(EC.alert_is_present())
-            alert_message = alert.text
-            print(f"Alert Message: {alert_message}")
-            assert "Patient not Selected! Please Select the patient first!" in alert_message, \
-                f"Unexpected alert message: {alert_message}"
-            alert.accept()
-            return True
-
-        except Exception as e:
-            print(f"Exception occurred: {e}")
-            return False
+        pass
+        assert False,"TODO:Implement handle_ot_booking_alert"
